@@ -1,3 +1,6 @@
+<?php
+include 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -9,7 +12,24 @@
 </head>
 
 <body>
-Koop hier goedkope vliegtickets
+  Koop hier goedkope vliegtickets
+<form action="idk.php" method="post">
+  <input list="landen">
+<datalist id="landen">
+    <?php
+  $query = mysqli_query($conn,"SELECT Land FROM myTable");
+  $land = mysqli_fetch_all($query,MYSQLI_ASSOC);
+  foreach ($land as $key => $value) {
+    foreach ($value as $key => $v) {
+      echo "<option value='".$v."'>";
+    }
+  }
+  ?>
+</datalist>
+  <input type="submit">
+</form>
+
+
 </body>
 
 </html>
