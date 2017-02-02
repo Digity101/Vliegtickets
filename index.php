@@ -9,6 +9,10 @@
 </head>
 
 <body>
+<?php
+include 'config.php';
+?>
+
 Koop hier goedkope vliegtickets
 </body>
 
