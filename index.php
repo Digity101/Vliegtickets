@@ -14,8 +14,8 @@ include 'config.php';
     <body>
         Koop hier goedkope vliegtickets
         <form action="idk.php" method="post">
-            <input list="landen" name="Vertrek">
-            <input list="landen" name="Aantkomst">
+            <input list="landen" name="Vertrek" id="Vertrek"><label for="Vertrek">Vertrek</label>
+            <input list="landen" name="Aantkomst" id="Aankomst"><label for="Aankomst"> Aankomst</label>
             <datalist id="landen">
                 <?php
                 $query = mysqli_query($conn,"SELECT Land FROM myTable");
@@ -27,7 +27,7 @@ include 'config.php';
                 }
                 ?>
             </datalist>
-            <input type="date" name="DatumVlucht">
+            <input type="date" name="DatumVlucht" id="DatumVLucht"><label for="DatumVLucht">Datum vlucht</label>
             
             <input type="submit" name="Zoek een vlucht">
         </form>
