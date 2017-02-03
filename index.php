@@ -14,8 +14,9 @@ include 'config.php';
     <body>
         Koop hier goedkope vliegtickets
         <form action="idk.php" method="post">
-            <input list="landen" name="Vertrek" id="Vertrek"><label for="Vertrek">Vertrek</label>
-            <input list="landen" name="Aantkomst" id="Aankomst"><label for="Aankomst"> Aankomst</label>
+            
+            <input list="landen" name="Vertrek" id="Vertrek"><label for="Vertrek">Vertrek</label><br>
+            <input list="landen" name="Aantkomst" id="Aankomst"><label for="Aankomst"> Aankomst</label><br>
             <datalist id="landen">
                 <?php
                 $query = mysqli_query($conn,"SELECT Land FROM myTable");
@@ -27,12 +28,15 @@ include 'config.php';
                 }
                 ?>
             </datalist>
-            <input type="date" name="DatumVlucht" id="DatumVLucht"><label for="DatumVLucht">Datum vlucht</label>
+            <input type="date" name="DatumVlucht" id="DatumVLuchtheen"><label for="DatumVLuchtheen">Datum vlucht heen</label>
             
             <input type="submit" name="Zoek een vlucht">
         </form>
 
 
     </body>
+<!-- http://stackoverflow.com/questions/25867236/change-div-color-with-css-checked-selector
+    http://stackoverflow.com/questions/16989585/css-3-slide-in-from-left-transition
 
+-->
 </html>
