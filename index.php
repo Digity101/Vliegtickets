@@ -14,9 +14,9 @@ include 'config.php';
     <body>
         Koop hier goedkope vliegtickets
         <form action="idk.php" method="post">
-            <input type="checkbox" checked name="Retour" id="Retour"><label for="Retour">Retour</label>
+            <input type="checkbox" checked name="Retour" id="Retour"><label for="Retour">Retour</label><br>
             <input list="landen" name="Vertrek" id="Vertrek"><label for="Vertrek">Vertrek</ label><br>
-            <input list="landen" name="Terug" id="Terug"><label for="Terug">Terug</label>
+            <input list="landen" name="Terug" id="Terug"><label for="Terug">Terug</label><br>
             <input list="landen" name="Aantkomst" id="Aankomst"><label for="Aankomst"> Aankomst</label><br>
             <datalist id="landen">
                 <option value="1"></option>
