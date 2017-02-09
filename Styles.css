@@ -1,0 +1,6 @@
+.TerugCl {
+	display: none;
+}
+#Retour:checked ~ .TerugCl {
+	display: initial;
+}
