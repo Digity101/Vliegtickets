@@ -17,9 +17,13 @@ include 'config.php';
   <input list="landen">
 <datalist id="landen">
     <?php
-  $query = mysqli_query($conn,"SELECT Land FROM myTable");
-  $land = mysqli_fetch_all($query,MYSQLI_ASSOC);
-  foreach ($land as $key => $value) {
+  $query = "SELECT VertrekLand FROM dummy1";
+  $resultaat= mysqli_query($conn, $query);
+  While ($row = mysqli_fetch_array($resultaat)){
+	$VertrekLand[] = $row;
+  }
+
+  foreach ($VertrekLand as $key => $value) {
     foreach ($value as $key => $v) {
       echo "<option value='".$v."'>";
     }
@@ -33,3 +37,7 @@ include 'config.php';
 </body>
 
 </html>
+
+<?php
+mysqli_close($conn);
+?>
