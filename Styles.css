@@ -4,11 +4,12 @@
 }
 
 /*.TerugCl {
-    opacity: 0;
+  opacity: 0;
 	margin-top: -330px;
 	z-index: -5;
 	transition-timing-function: linear, step-end, step-end;
 }
+
 #Retour:checked ~ .TerugCl {
     transition: opacity 0.5s linear, margin-top 0.5s step-start, z-index 0.5s step-start;
 	display: initial;

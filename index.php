@@ -32,7 +32,6 @@ include 'config.php';
                 <input type="submit" name="Zoek een vlucht">
             </form>
         </div>
-
     </body>
     <!-- http://stackoverflow.com/questions/25867236/change-div-color-with-css-checked-selector
 http://stackoverflow.com/questions/16989585/css-3-slide-in-from-left-transition
