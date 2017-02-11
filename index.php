@@ -8,17 +8,29 @@ include 'config.php';
         <title>Geen scam</title>
         <link href="icon.ico" rel="shortcut icon">
         <meta charset="UTF-8">
-        <link href="/MikaGithubtest/Vliegtickets/Styles.css" rel="stylesheet">
-        <script src="/MikaGithubtest/Vliegtickets/jquery-3.1.1.min.js"></script>
-        <script src="/MikaGithubtest/Vliegtickets/JSpag1.js"></script>
+        <link href="/Styles.css" rel="stylesheet">
+        <script src="/jquery-3.1.1.min.js"></script>
+        <script src="/JSpag1.js"></script>
     </head>
+
 
     <body>
         <div class=FormWrapper>
             <form action="idk.php" method="post">
                 <datalist id="landen">
-                    <option value="1"></option>
-                    <option value="2"></option>
+                           <?php
+  $query = "SELECT VertrekLand FROM dummy1";
+  $resultaat= mysqli_query($conn, $query);
+  While ($row = mysqli_fetch_array($resultaat)){
+	$VertrekLand[] = $row;
+  }
+
+  foreach ($VertrekLand as $key => $value) {
+    foreach ($value as $key => $v) {
+      echo "<option value='".$v."'></option>";
+    }
+  }
+  ?>
                 </datalist>
                 <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour</label><br>
                 <label for="Vertrek">Vertrek</label><br>
@@ -31,6 +43,7 @@ include 'config.php';
                 <input type="date" name="Terug" id="Terug" class="TerugCl" class="VInput" required><br>
                 <input type="submit" name="Zoek een vlucht">
             </form>
+
         </div>
     </body>
     <!-- http://stackoverflow.com/questions/25867236/change-div-color-with-css-checked-selector
@@ -38,3 +51,7 @@ http://stackoverflow.com/questions/16989585/css-3-slide-in-from-left-transition
 http://stackoverflow.com/questions/3789844/how-to-make-a-greyed-out-html-form
 -->
 </html>
+
+<?php
+mysqli_close($conn);
+?>
