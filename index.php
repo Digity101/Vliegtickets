@@ -1,4 +1,11 @@
 
+<?php
+// Maakt verbinding
+include 'config.php';
+// Start the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -14,21 +21,17 @@
 
     <body>
         <div class=FormWrapper>
-            <form action="idk.php" method="post">
+            <form action="zoeken.php" method="post">
                 <datalist id="landen">
                            <?php
-  $query = "SELECT VertrekLand FROM dummy1";
+  $query = "SELECT Landen FROM Landen";
   $resultaat= mysqli_query($conn, $query);
-  While ($row = mysqli_fetch_array($resultaat)){
-	$VertrekLand[] = $row;
+  // Doet de while loop totdat er geen row is en fetch_row dus False geeft,
+  While ($row = mysqli_fetch_assoc($resultaat)){
+	echo "<option value='".$row["Landen"]."' id='".$row["Landen"]."'></option>";
   }
+  
 
-  foreach ($VertrekLand as $key => $value) {
-    foreach ($value as $key => $v) {
-      echo "<option value='".$v."' id='".$v."'></option>";
-    }
-  }
-  ?>
                 </datalist>
                 <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour</label><br>
                 <label for="Vertrek">Vertrek</label><br>
@@ -44,10 +47,6 @@
 
         </div>
     </body>
-    <!-- http://stackoverflow.com/questions/25867236/change-div-color-with-css-checked-selector
-http://stackoverflow.com/questions/16989585/css-3-slide-in-from-left-transition
-http://stackoverflow.com/questions/3789844/how-to-make-a-greyed-out-html-form
--->
 </html>
 
 <?php
