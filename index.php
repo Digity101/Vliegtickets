@@ -1,9 +1,11 @@
+
 <?php
 // Maakt verbinding
 include 'config.php';
 // Start the session
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -26,18 +28,18 @@ session_start();
   $resultaat= mysqli_query($conn, $query);
   // Doet de while loop totdat er geen row is en fetch_row dus False geeft,
   While ($row = mysqli_fetch_assoc($resultaat)){
-	echo "<option value='".$row["Landen"]."'></option>";
+	echo "<option value='".$row["Landen"]."' id='".$row["Landen"]."'></option>";
   }
+  
 
-  ?>
                 </datalist>
                 <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour</label><br>
                 <label for="Vertrek">Vertrek</label><br>
-                <input list="landen" name="Vertrek" id="Vertrek" class="VInput"><br>
+                <input list="landen" name="Vertrek" id="Vertrek" class="VInput" onblur="DatalistEdit();" required><br>
                 <label for="Aankomst"> Aankomst</label><br>
-                <input list="landen" name="Aantkomst" id="Aankomst" class="VInput"><br>
+                <input list="landen" name="Aantkomst" id="Aankomst" class="VInput" required><br>
                 <label for="DatumVLuchtheen">Datum vlucht heen</label><br>
-                <input type="date" name="DatumVlucht" id="DatumVLuchtheen" class="VInput"><br>
+                <input type="date" name="DatumVlucht" id="DatumVLuchtheen" class="VInput" required><br>
                 <label for="Terug" class="TerugCl">Terug<br></label>
                 <input type="date" name="Terug" id="Terug" class="TerugCl" class="VInput" required><br>
                 <input type="submit" name="Zoek een vlucht">

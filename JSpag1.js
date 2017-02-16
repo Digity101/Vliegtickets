@@ -11,8 +11,9 @@ $(document).ready(function () {
             document.getElementById("Terug").required = false;
             
 	   }
-	   
-
-
     });
 });
+
+function DatalistEdit () {
+    var VerwDLE = document.getElementById() ;
+}
