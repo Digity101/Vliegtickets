@@ -1,6 +1,4 @@
-<!--<?php
-include 'config.php';
-?>-->
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -27,18 +25,18 @@ include 'config.php';
 
   foreach ($VertrekLand as $key => $value) {
     foreach ($value as $key => $v) {
-      echo "<option value='".$v."'></option>";
+      echo "<option value='".$v."' id='".$v."'></option>";
     }
   }
   ?>
                 </datalist>
                 <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour</label><br>
                 <label for="Vertrek">Vertrek</label><br>
-                <input list="landen" name="Vertrek" id="Vertrek" class="VInput"><br>
+                <input list="landen" name="Vertrek" id="Vertrek" class="VInput" onblur="DatalistEdit();" required><br>
                 <label for="Aankomst"> Aankomst</label><br>
-                <input list="landen" name="Aantkomst" id="Aankomst" class="VInput"><br>
+                <input list="landen" name="Aantkomst" id="Aankomst" class="VInput" required><br>
                 <label for="DatumVLuchtheen">Datum vlucht heen</label><br>
-                <input type="date" name="DatumVlucht" id="DatumVLuchtheen" class="VInput"><br>
+                <input type="date" name="DatumVlucht" id="DatumVLuchtheen" class="VInput" required><br>
                 <label for="Terug" class="TerugCl">Terug<br></label>
                 <input type="date" name="Terug" id="Terug" class="TerugCl" class="VInput" required><br>
                 <input type="submit" name="Zoek een vlucht">
