@@ -21,7 +21,10 @@ input{
 	margin-bottom: 0.5vh;
 	margin-left: 0.5vw;
 	margin-right: 0.5vw;
+	border: 0;
+	padding: 0;
 }
+
 
 table, th, td{
 	border: 1px solid black;
@@ -37,8 +40,18 @@ table, th, td{
 	width: 10vw;
 }
 
+.PersVer{
+	margin-left: 2vw;
+}
+
 label{
 	font-family: happymonkey;
+}
+
+#Body{
+	background: url("Fotos/Foto1.jpg");
+	background-repeat: no-repeat;
+	background-size: 100vw 100vh;
 }
 
 .FormWrapper{
