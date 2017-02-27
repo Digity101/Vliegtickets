@@ -1,7 +1,6 @@
 <?php
 // Maakt verbinding
 include 'config.php';
-include 'functies.php';
 // Start the session
 session_start();
 ?>
@@ -12,14 +11,20 @@ session_start();
         <title>Geen scam</title>
         <link href="icon.ico" rel="shortcut icon">
         <meta charset="UTF-8">
-        <link href="Styles.css" rel="stylesheet">
-        <script src="jquery-3.1.1.min.js"></script>
-        <script src="JSpag1.js"></script>
+        <link href="/Styles.css" rel="stylesheet">
+        <script src="/jquery-3.1.1.min.js"></script>
+        <script src="/JSpag1.js"></script>
     </head>
 
 
     <body>
-	<Form action="placeholder.php" method="post">
+	<table style="width:100%">
+		<tr>
+			<th>Vertrek</th>
+			<th>Aankomst</th> 
+			<th>Datum</th>
+			<th>Vluchtnummer</th>
+		</tr>
     <?php
 	$VertrekLand = $_POST["Vertrek"];
 	$AankomLand = $_POST["Aantkomst"];
