@@ -41,7 +41,7 @@ session_start();
   While ($row = mysqli_fetch_assoc($resultaat)){
 	echo "<option value='".$row["Landen"]."' id='".$row["Landen"]."'></option>";
   }
-  ?>
+ ?>  
 
                 </datalist>
                 <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour</label><br>
@@ -50,7 +50,7 @@ session_start();
                 <label for="Aankomst"> Aankomen in:</label><br>
                 <input list="landen" name="Aantkomst" id="Aankomst" class="VInput" required><br>
                 <label for="DatumVLuchtheen">Datum van de vluchtheen</label><br>
-                <input type="date" name="DatumVlucht" id="DatumVLuchtheen" class="VInput" required>
+                <input type="date" name="DatumVlucht" id="DatumVLuchtheen" class="VInput" <?php echo"min='". date("Y-m-d") . "' value='" .date("Y-m-d") ."'";?> oninput="MinTerug();"  required>
                 <label for="Terug" class="TerugCl"><br>Datum van de vlucht terug<br></label>
                 <input type="date" name="Terug" id="Terug" class="TerugCl" required><br>
                 <label for="AantalPers" >Aantal Personen<br></label>
