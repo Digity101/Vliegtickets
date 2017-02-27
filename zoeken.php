@@ -29,22 +29,28 @@ session_start();
 	$VertrekLand = $_POST["Vertrek"];
 	$AankomLand = $_POST["Aantkomst"];
 	$DatumVertrek = $_POST["DatumVlucht"];
-
-  $query =  'SELECT VertrekLand, Aankomstland, VertrekDatum, Fluchtnummer FROM dummy1 
-  WHERE VertrekLand = "' .$VertrekLand.'"AND AankomstLand = "'.$AankomLand.'" AND VertrekDatum="'.$DatumVertrek.'"';
-  $resultaat= mysqli_query($conn, $query);
-  //Doet de while loop totdat er geen row is en fetch_row dus False geeft,
-  While ($row = mysqli_fetch_assoc($resultaat)){
-  print_r($row);
-	echo  '<tr> 
-			<td>'.$row["VertrekLand"].'</td>
-			<td>'.$row["Aankomstland"].'</td>
-			<td>'.$row["VertrekDatum"].'</td>
-			<td>'.$row["Fluchtnummer"].'</td>
-		</tr>';
-  }
+    
+	$query =  'SELECT VertrekLand, Aankomstland, VertrekDatum, Vluchtnummer FROM dummy1 
+	WHERE VertrekLand = "' .$VertrekLand.'"AND AankomstLand = "'.$AankomLand.'" AND VertrekDatum="'.$DatumVertrek.'"';
+    
+	tabel("Heenreis",$query, $conn, 1);
+    
+	if($_POST["Retour"]){	
+		$VertrekLand = $_POST["Aantkomst"];
+		$AankomLand = $_POST["Vertrek"];
+		$DatumVertrek = $_POST["Terug"];
+    
+		$query =  'SELECT VertrekLand, Aankomstland, VertrekDatum, Vluchtnummer FROM dummy1 
+		WHERE VertrekLand = "' .$VertrekLand.'"AND AankomstLand = "'.$AankomLand.'" AND VertrekDatum="'.$DatumVertrek.'"';
+		tabel("Terugreis",$query, $conn,1);
+	}
+	
+	IF(mysqli_num_rows(mysqli_query($conn, $query))!=0){
+		echo'<input type="submit" value="Submit">';
+		return;
+	}
   ?>
-    <Table>
+  </Form>
     </body>
 </html>
 
