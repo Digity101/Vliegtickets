@@ -60,7 +60,6 @@ function ValiPers()
 	{
 		document.getElementById("Submit1").disabled = true;
 	} else {
-		document.getElementById("Aantalpers").value = (parseInt(document.getElementById("AantalVolw").value) + parseInt(document.getElementById("AantalKind").value) + parseInt(document.getElementById("AantalBaby").value));
 		document.getElementById("Submit1").disabled = false;
 	}
 }
