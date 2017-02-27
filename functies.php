@@ -3,7 +3,7 @@ function tabel($naam, $mysql_query,$connection,$radio){
 	echo"<h1>$naam</h1>";
 	$resultaat= mysqli_query($connection, $mysql_query);
 	IF(mysqli_num_rows($resultaat)==0){
-		echo "Geen vluchtbeschikbaar<br>";
+		echo "Geen vlucht beschikbaar<br>";
 		return;
 	}
 	echo '<table><tr>';
