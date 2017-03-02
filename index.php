@@ -27,7 +27,7 @@ session_start();
   While ($row = mysqli_fetch_assoc($resultaat)){
 	echo "<option value='".$row["Landen"]."' id='".$row["Landen"]."'></option>";
   }
-  ?>
+ ?>  
 
                 </datalist>
                 <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour</label><br>

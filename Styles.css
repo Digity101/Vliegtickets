@@ -26,21 +26,6 @@ input{
 	padding: 0;
 }
 
-
-table, th, td{
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-.knop {
-	border: 1px solid white;
-}
-
-.VInput{
-	height: 1vw;
-	width: 10vw;
-}
-
 .PersVer{
 	margin-left: 2vw;
 }

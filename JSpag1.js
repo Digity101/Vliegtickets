@@ -7,6 +7,7 @@ $(document).ready(function ()
 	setInterval(changeBackground, 5000);
 	$(".PersVer").hide();
 	$(".PersVer").required = false;
+	document.getElementById("Terug").min = document.getElementById("DatumVLuchtheen").value;
 	$("#Retour").on('click', function ()
 	{
 		if ($(this).is(':checked'))
@@ -59,20 +60,22 @@ function ValiPers()
 	{
 		document.getElementById("Submit1").disabled = true;
 	} else {
-		document.getElementById("Aantalpers").value = (parseInt(document.getElementById("AantalVolw").value) + parseInt(document.getElementById("AantalKind").value) + parseInt(document.getElementById("AantalBaby").value));
 		document.getElementById("Submit1").disabled = false;
 	}
 }
 
-var imageIndex = 1;
-var imagesArray = [
-    "Fotos/Foto1.jpg",
-    "Fotos/Foto2.jpg",
-    "Fotos/Foto2.jpg"
-];
+function MinTerug(){
+	document.getElementById("Terug").min = document.getElementById("DatumVLuchtheen").value;
+}
+
+var FotoLoc = 1;
 
 function changeBackground(){
-    var index = imageIndex++ % imagesArray.length;
-    $("#Body").css({"background" : "url('"+ imagesArray[index] +"')" , "background-repeat" : "no-repeat" , "background-size" : "100vw 100vh"});
+    if(FotoLoc == 3){
+		FotoLoc = 1
+	} else {
+		FotoLoc++
+	}
+    $("#Body").css({"background" : "url('Fotos/Foto"+ Fotoloc +"')" , "background-repeat" : "no-repeat" , "background-size" : "100vw 100vh"});
 	
 }

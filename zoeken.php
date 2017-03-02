@@ -1,7 +1,6 @@
 <?php
 // Maakt verbinding
 include 'config.php';
-include 'functies.php';
 // Start the session
 session_start();
 ?>
@@ -11,10 +10,10 @@ session_start();
     <head>
         <title>Geen scam</title>
         <link href="icon.ico" rel="shortcut icon">
-        <link href="Styles.css" rel="stylesheet">
+        <link href="/Styles.css" rel="stylesheet">
+        <script src="/jquery-3.1.1.min.js"></script>
+        <script src="/JSpag1.js"></script>
     </head>
-
-
     <body>
     <?php
 	$_SESSION["post"] = $_POST;
@@ -52,7 +51,6 @@ session_start();
 		return;
 	}
   ?>
-  </Form>
     </body>
 </html>
 
