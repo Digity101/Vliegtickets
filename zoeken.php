@@ -39,8 +39,12 @@ session_start();
 		WHERE VertrekLand = "' .$VertrekLand.'"AND AankomstLand = "'.$AankomLand.'" AND VertrekDatum="'.$DatumVertrek.'"';
 		tabel("Terugreis",$query, $conn,1);
 	}
+	
+	IF(mysqli_num_rows(mysqli_query($conn, $query))!=0){
+		echo'<input type="submit" value="Submit">';
+		return;
+	}
   ?>
-  <input type="submit" value="Submit">
   </Form>
     </body>
 </html>
