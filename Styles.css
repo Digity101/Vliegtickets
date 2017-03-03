@@ -1,9 +1,10 @@
+/*
 @font-face {
     font-family: happymonkey;
     src: url(http://v15groep1.helenparkhurst.net/MikaGithubtest/Vliegtickets/HappyMonkey-Regular.ttf);
 }
 
-/*.TerugCl {
+.TerugCl {
   opacity: 0;
 	margin-top: -330px;
 	z-index: -5;
