@@ -53,7 +53,3 @@ session_start();
   ?>
     </body>
 </html>
-
-<?php
-mysqli_close($conn);
-?>

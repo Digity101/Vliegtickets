@@ -1,7 +1,7 @@
 CREATE TABLE `myTable` (
-  `id` mediumint(8) unsigned NOT NULL auto_increment,
-  `Land` varchar(100) default NULL,
-  PRIMARY KEY (`id`)
+    `id` mediumint(8) unsigned NOT NULL auto_increment,
+    `Land` varchar(100) default NULL,
+    PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1;
 
 INSERT INTO `myTable` (`Land`) VALUES ("Guinea-Bissau"),("Congo, the Democratic Republic of the"),("Uruguay"),("Gambia"),("Togo"),("United States"),("Puerto Rico"),("Bahamas"),("Jersey"),("Singapore");
