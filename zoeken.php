@@ -18,13 +18,18 @@ session_start();
 
 
     <body>
-	<table style="width:100%">
-		<tr>
-			<th>Vertrek</th>
-			<th>Aankomst</th> 
-			<th>Datum</th>
-			<th>Vluchtnummer</th>
-		</tr>
+        <table style="width:100%">
+            <tr>
+                <th>Vertrek</th>
+                <th>Aankomst</th> 
+                <th>Datum</th>
+                <th>Vluchtnummer</th>
+            </tr>
+            <?php
+            $VertrekLand = $_POST["Vertrek"];
+            $AankomLand = $_POST["Aantkomst"];
+            $DatumVertrek = $_POST["DatumVlucht"];
+	<Form action="placeholder.php" method="post">
     <?php
 	$VertrekLand = $_POST["Vertrek"];
 	$AankomLand = $_POST["Aantkomst"];
@@ -53,7 +58,3 @@ session_start();
   </Form>
     </body>
 </html>
-
-<?php
-mysqli_close($conn);
-?>

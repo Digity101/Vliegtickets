@@ -33,15 +33,16 @@ session_start();
         <div class=FormWrapper>
             <form action="zoeken.php" method="post">
                 <datalist id="landen">
-                  
-  <?php
-  $query = "SELECT Landen FROM Landen";
-  $resultaat= mysqli_query($conn, $query);
   // Doet de while loop totdat er geen row is en fetch_row dus False geeft,
-  While ($row = mysqli_fetch_assoc($resultaat)){
-	echo "<option value='".$row["Landen"]."' id='".$row["Landen"]."'></option>";
-  }
- ?>  
+
+                    <?php
+                    $query = "SELECT Landen FROM Landen";
+                    $resultaat= mysqli_query($conn, $query);
+                    // Doet de while loop totdat er geen row is en fetch_row dus False geeft,
+                    While ($row = mysqli_fetch_assoc($resultaat)){
+                        echo "<option value='".$row["Landen"]."' id='".$row["Landen"]."'></option>";
+                    }
+                    ?>  
 
                 </datalist>
                 <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour</label><br>
