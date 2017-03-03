@@ -10,51 +10,46 @@ session_start();
     <head>
         <title>Geen scam</title>
         <link href="icon.ico" rel="shortcut icon">
-        <meta charset="UTF-8">
         <link href="/Styles.css" rel="stylesheet">
         <script src="/jquery-3.1.1.min.js"></script>
         <script src="/JSpag1.js"></script>
     </head>
-
-
     <body>
-        <table style="width:100%">
-            <tr>
-                <th>Vertrek</th>
-                <th>Aankomst</th> 
-                <th>Datum</th>
-                <th>Vluchtnummer</th>
-            </tr>
-            <?php
-            $VertrekLand = $_POST["Vertrek"];
-            $AankomLand = $_POST["Aantkomst"];
-            $DatumVertrek = $_POST["DatumVlucht"];
-	<Form action="placeholder.php" method="post">
     <?php
-	$VertrekLand = $_POST["Vertrek"];
-	$AankomLand = $_POST["Aantkomst"];
-	$DatumVertrek = $_POST["DatumVlucht"];
+	$_SESSION["post"] = $_POST;
+	echo"<pre>";
+	print_r($_SESSION);
+	echo"</pre>";
+	
+	$Opties =  'SELECT MIN(Prijs) AS Prijs, VertrekDatum FROM dummy1 
+	WHERE VertrekLand = "'.$_SESSION["post"]["Vertrek"].'" AND AankomstLand = "'.$_SESSION["post"]["Aantkomst"].'" 
+    AND VertrekDatum BETWEEN DATE_ADD("'.$_SESSION["post"]["DatumVlucht"].'", INTERVAL -2 DAY) AND DATE_ADD("'.$_SESSION["post"]["DatumVlucht"].'", INTERVAL 2 DAY)
+    GROUP BY 2 ORDER BY 2';
+    Suggestie("Andere Datums",$Opties, $conn,"DatumVlucht");
+
+	echo '<Form action="placeholder.php" method="post" id="zoeken">'; 
+	$query =  'SELECT VertrekLand, Aankomstland, VertrekDatum, Vluchtnummer, Prijs FROM dummy1 
+	WHERE VertrekLand = "' .$_SESSION["post"]["Vertrek"].'"AND AankomstLand = "'.$_SESSION["post"]["Aantkomst"].'" AND VertrekDatum="'.$_SESSION["post"]["DatumVlucht"].'"';
+	tabel("Heenreis",$query, $conn);
+    echo '</Form>';  
     
-	$query =  'SELECT VertrekLand, Aankomstland, VertrekDatum, Vluchtnummer FROM dummy1 
-	WHERE VertrekLand = "' .$VertrekLand.'"AND AankomstLand = "'.$AankomLand.'" AND VertrekDatum="'.$DatumVertrek.'"';
-    
-	tabel("Heenreis",$query, $conn, 1);
-    
-	if($_POST["Retour"]){	
-		$VertrekLand = $_POST["Aantkomst"];
-		$AankomLand = $_POST["Vertrek"];
-		$DatumVertrek = $_POST["Terug"];
-    
+	if($_POST["Retour"]){
+		$Optiesterug =  'SELECT MIN(Prijs) AS Prijs, VertrekDatum FROM dummy1 
+	WHERE VertrekLand = "'.$_SESSION["post"]["Aantkomst"].'" AND AankomstLand = "'.$_SESSION["post"]["Vertrek"].'" 
+    AND VertrekDatum BETWEEN DATE_ADD("'.$_SESSION["post"]["Terug"].'", INTERVAL -2 DAY) AND DATE_ADD("'.$_SESSION["post"]["Terug"].'", INTERVAL 2 DAY)
+    GROUP BY 2 ORDER BY 2';
+	
+    Suggestie("Andere Datums",$Optiesterug, $conn,"Terug");
+	echo'<Form action="placeholder.php" method="post">'; 
 		$query =  'SELECT VertrekLand, Aankomstland, VertrekDatum, Vluchtnummer FROM dummy1 
-		WHERE VertrekLand = "' .$VertrekLand.'"AND AankomstLand = "'.$AankomLand.'" AND VertrekDatum="'.$DatumVertrek.'"';
-		tabel("Terugreis",$query, $conn,1);
+		WHERE VertrekLand = "' .$_SESSION["post"]["Aantkomst"].'"AND AankomstLand = "'.$_SESSION["post"]["Vertrek"].'" AND VertrekDatum="'.$_SESSION["post"]["Terug"].'"';
+		tabel("Terugreis",$query, $conn);
 	}
 	
 	IF(mysqli_num_rows(mysqli_query($conn, $query))!=0){
-		echo'<input type="submit" value="Submit">';
+		echo'<input type="submit" value="Submit" form="zoeken">';
 		return;
 	}
   ?>
-  </Form>
     </body>
 </html>
