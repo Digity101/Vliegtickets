@@ -1,9 +1,11 @@
 <?php
 // Maakt verbinding
 include 'config.php';
+include 'functies.php';
 // Start the session
 session_start();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -12,6 +14,11 @@ session_start();
         <title>Geen scam</title>
         <link href="icon.ico" rel="shortcut icon">
         <meta charset="UTF-8">
+		<link href="Styles.css" rel="stylesheet">
+        <script src="/jquery-3.1.1.min.js"></script>
+        <script src="jquery.cycle.lite.js"></script>
+        <script src="JSpag1.js"></script>
+
     </head>
 
 
@@ -21,13 +28,15 @@ session_start();
                 <datalist id="landen">
                   
   <?php
-  $query = "SELECT Landen FROM Landen";
+  $query = "SELECT `vertrekplaats` AS name FROM VLUCHT
+UNION
+SELECT `aankomstplaats` AS name FROM VLUCHT";
   $resultaat= mysqli_query($conn, $query);
   // Doet de while loop totdat er geen row is en fetch_row dus False geeft,
   While ($row = mysqli_fetch_assoc($resultaat)){
-	echo "<option value='".$row["Landen"]."' id='".$row["Landen"]."'></option>";
+	echo "<option value='".$row["name"]."' id='".$row["name"]."'></option>";
   }
- ?>  
+  ?>
 
                 </datalist>
                 <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour</label><br>
@@ -51,6 +60,15 @@ session_start();
             </form>
 
         </div>
+		<br>
+		<div class=FormWrapper>
+            <form action="index.php" method="post">
+			<input type="text" name="Boekingsnummer">
+			<input type="submit" name="Zoek" id="Submit1">
+			</form>
+		<?php
+		?>
+		</div>
     </body>
 </html>
 <script>
@@ -63,6 +81,7 @@ for (var i = 0; i < inputs.length; i++) {
     var optionFound = false,
       datalist = this.list;
     // Determine whether an option exists with the current value of the input.
+
     for (var j = 0; j < datalist.options.length; j++) {
         if (this.value == datalist.options[j].value) {
             optionFound = true;
@@ -78,13 +97,10 @@ for (var i = 0; i < inputs.length; i++) {
     }
   });
 }
+if ( $('#DatumVLuchtheen')[0].type != 'date' ) $('#DatumVLuchtheen').datepicker();
+if ( $('#Terug')[0].type != 'date' ) $('#Terug').datepicker();
 });
 </script>
-        <link href="Styles.css" rel="stylesheet">
-        <script src="/jquery-3.1.1.min.js"></script>
-        <script src="jquery.cycle.lite.js"></script>
-        <script src="JSpag1.js"></script>
-
 <?php
 mysqli_close($conn);
 ?>

@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "v15groep1";
 $password = "Welkom#1";
-$db = "v15groep1_dummy";
+$db = "v15groep1_vlieg";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $db);
@@ -11,6 +11,6 @@ $conn = mysqli_connect($servername, $username, $password, $db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+echo "<!---Connected successfully--->";
 
 ?>

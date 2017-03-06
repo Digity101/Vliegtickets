@@ -1,6 +1,7 @@
 <?php
 // Maakt verbinding
 include 'config.php';
+include 'functies.php';
 // Start the session
 session_start();
 ?>
@@ -17,32 +18,28 @@ session_start();
     <body>
     <?php
 	$_SESSION["post"] = $_POST;
-	echo"<pre>";
-	print_r($_SESSION);
-	echo"</pre>";
-	
-	$Opties =  'SELECT MIN(Prijs) AS Prijs, VertrekDatum FROM dummy1 
-	WHERE VertrekLand = "'.$_SESSION["post"]["Vertrek"].'" AND AankomstLand = "'.$_SESSION["post"]["Aantkomst"].'" 
-    AND VertrekDatum BETWEEN DATE_ADD("'.$_SESSION["post"]["DatumVlucht"].'", INTERVAL -2 DAY) AND DATE_ADD("'.$_SESSION["post"]["DatumVlucht"].'", INTERVAL 2 DAY)
-    GROUP BY 2 ORDER BY 2';
-    Suggestie("Andere Datums",$Opties, $conn,"DatumVlucht");
 
+	$Opties =  'SELECT MIN(prijs) AS prijs, datumvertrek FROM VLUCHT 
+	WHERE vertrekplaats = "'.$_SESSION["post"]["Vertrek"].'" AND aankomstplaats = "'.$_SESSION["post"]["Aantkomst"].'" 
+    AND datumvertrek BETWEEN DATE_ADD("'.$_SESSION["post"]["DatumVlucht"].'", INTERVAL -7 DAY) AND DATE_ADD("'.$_SESSION["post"]["DatumVlucht"].'", INTERVAL 7 DAY)
+    GROUP BY 2 ORDER BY 2';
+    Suggestie("Andere Datums Heenreis",$Opties, $conn,"DatumVlucht");
 	echo '<Form action="placeholder.php" method="post" id="zoeken">'; 
-	$query =  'SELECT VertrekLand, Aankomstland, VertrekDatum, Vluchtnummer, Prijs FROM dummy1 
-	WHERE VertrekLand = "' .$_SESSION["post"]["Vertrek"].'"AND AankomstLand = "'.$_SESSION["post"]["Aantkomst"].'" AND VertrekDatum="'.$_SESSION["post"]["DatumVlucht"].'"';
+	$query =  'SELECT vertrekplaats, aankomstplaats, datumvertrek, Vnr, prijs FROM VLUCHT 
+	WHERE vertrekplaats = "' .$_SESSION["post"]["Vertrek"].'"AND aankomstplaats = "'.$_SESSION["post"]["Aantkomst"].'" AND datumvertrek="'.$_SESSION["post"]["DatumVlucht"].'"';
 	tabel("Heenreis",$query, $conn);
     echo '</Form>';  
     
 	if($_POST["Retour"]){
-		$Optiesterug =  'SELECT MIN(Prijs) AS Prijs, VertrekDatum FROM dummy1 
-	WHERE VertrekLand = "'.$_SESSION["post"]["Aantkomst"].'" AND AankomstLand = "'.$_SESSION["post"]["Vertrek"].'" 
-    AND VertrekDatum BETWEEN DATE_ADD("'.$_SESSION["post"]["Terug"].'", INTERVAL -2 DAY) AND DATE_ADD("'.$_SESSION["post"]["Terug"].'", INTERVAL 2 DAY)
+		$Optiesterug =  'SELECT MIN(prijs) AS prijs, datumvertrek FROM VLUCHT 
+	WHERE vertrekplaats = "'.$_SESSION["post"]["Aantkomst"].'" AND aankomstplaats = "'.$_SESSION["post"]["Vertrek"].'" 
+    AND datumvertrek BETWEEN DATE_ADD("'.$_SESSION["post"]["Terug"].'", INTERVAL -7 DAY) AND DATE_ADD("'.$_SESSION["post"]["Terug"].'", INTERVAL 7 DAY)
     GROUP BY 2 ORDER BY 2';
 	
-    Suggestie("Andere Datums",$Optiesterug, $conn,"Terug");
+    Suggestie("Andere Datums Terugreis",$Optiesterug, $conn,"Terug");
 	echo'<Form action="placeholder.php" method="post">'; 
-		$query =  'SELECT VertrekLand, Aankomstland, VertrekDatum, Vluchtnummer FROM dummy1 
-		WHERE VertrekLand = "' .$_SESSION["post"]["Aantkomst"].'"AND AankomstLand = "'.$_SESSION["post"]["Vertrek"].'" AND VertrekDatum="'.$_SESSION["post"]["Terug"].'"';
+		$query =  'SELECT vertrekplaats, aankomstplaats, datumvertrek, Vnr FROM VLUCHT 
+		WHERE vertrekplaats = "' .$_SESSION["post"]["Aantkomst"].'"AND aankomstplaats = "'.$_SESSION["post"]["Vertrek"].'" AND datumvertrek="'.$_SESSION["post"]["Terug"].'"';
 		tabel("Terugreis",$query, $conn);
 	}
 	
@@ -53,7 +50,6 @@ session_start();
   ?>
     </body>
 </html>
-
 <?php
 mysqli_close($conn);
 ?>
