@@ -14,7 +14,6 @@ function tabel($naam, $mysql_query,$connection,$radio = 1){
 	  echo "<th>".$k -> name ."</th>";
    }
 	echo '</tr>';
-
 	//Doet de while loop totdat er geen row is en fetch_row dus False geeft,
 	While ($row = mysqli_fetch_assoc($resultaat)){
 		echo "<tr>";
@@ -28,7 +27,6 @@ function tabel($naam, $mysql_query,$connection,$radio = 1){
 	}
   echo "</table>";
 }
-
 function Suggestie($naam, $mysql_query,$connection,$verzendnaam){
 	echo'<form action="zoeken.php" method="post">';
 	Foreach ($_SESSION["post"] as $key => $value){
@@ -41,7 +39,6 @@ function Suggestie($naam, $mysql_query,$connection,$verzendnaam){
 		return;
 	}
 	echo '<table><tr>';
-
 	//Doet de while loop totdat er geen row is en fetch_row dus False geeft,
 	While ($row = mysqli_fetch_row($resultaat)){
 		echo "<th>".$row[1]."</th>";

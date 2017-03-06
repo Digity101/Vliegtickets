@@ -1,4 +1,5 @@
 $(document).ready(function ()
+
                   {
     if ($("#Retour").is(':checked'))
     {
@@ -21,6 +22,7 @@ $(document).ready(function ()
             document.getElementById("Terug").required = false;
         }
     });
+
 });
 
 function DatalistRemove()
@@ -56,6 +58,7 @@ function CheckAantalPers()
 
 function ValiPers()
 {
+
     if((parseInt(document.getElementById("AantalVolw").value) + parseInt(document.getElementById("AantalKind").value) + parseInt(document.getElementById("AantalBaby").value)) != parseInt(document.getElementById("Aantalpers").value))
     {
         document.getElementById("Submit1").disabled = true;
