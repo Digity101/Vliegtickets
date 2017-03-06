@@ -49,42 +49,16 @@ session_start();
                 <label for="AantalBaby" class="PersVer"> <br> Aantal Baby's (0-2)<br></label>
                 <input type="number" name="AantalBaby" id="AantalBaby" class="PersVer" value="0" min="0" required  oninput="ValiPers();"><br>
                 <input type="submit" name="Zoek een vlucht" id="Submit1">
+                <?php $guid = uniqid(); echo $guid;?>
             </form>
 
         </div>
     </body>
 </html>
-<script>
-$( document ).ready(function() {
-  // Find all inputs on the DOM which are bound to a datalist via their list attribute.
-var inputs = document.querySelectorAll('input[list]');
-for (var i = 0; i < inputs.length; i++) {
-  // When the value of the input changes...
-  inputs[i].addEventListener('change', function() {
-    var optionFound = false,
-      datalist = this.list;
-    // Determine whether an option exists with the current value of the input.
-    for (var j = 0; j < datalist.options.length; j++) {
-        if (this.value == datalist.options[j].value) {
-            optionFound = true;
-            break;
-        }
-    }
-    // use the setCustomValidity function of the Validation API
-    // to provide an user feedback if the value does not exist in the datalist
-    if (optionFound) {
-      this.setCustomValidity('');
-    } else {
-      this.setCustomValidity('Please select a valid value.');
-    }
-  });
-}
-});
-</script>
-        <link href="Styles.css" rel="stylesheet">
-        <script src="/jquery-3.1.1.min.js"></script>
-        <script src="jquery.cycle.lite.js"></script>
-        <script src="JSpag1.js"></script>
+<link href="Styles.css" rel="stylesheet">
+<script src="/jquery-3.1.1.min.js"></script>
+<script src="jquery.cycle.lite.js"></script>
+<script src="JSpag1.js"></script>
 
 <?php
 mysqli_close($conn);
