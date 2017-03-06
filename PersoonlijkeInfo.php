@@ -1,3 +1,8 @@
+<?php
+include 'config.php';
+session_start();
+$_SESSION["post2"] = $_POST;
+?>
 <html> 
     <head>
         <title>Geen scam</title>
@@ -16,11 +21,28 @@
 
 
     <body id="Body">
-        <form action="zoeken.php" method="post">
-            <php?
-                 for(Sessions_) 
+		<div class="FormWrapper">
+        <form action="Bevestiging.php" method="post">
+		
+            <?php
+            /*http://stackoverflow.com/questions/160550/zip-code-us-postal-code-validation*/
+			echo"<pre>";
+             print_r($_SESSION["post"]);
+             echo"</pre>";
+			 for($i = 1;$i < $_SESSION["post"]["AantalPers"] + 1; $i++){
+                echo "Persoon Nummer" . $i . "<br>
+                <input required type=\"text\" id=\"Voornaam" . $i ."\" name=\"Voornaam" . $i . "\"><label for\"Voornaam" . $i ."\> Voornaam persoon " . $i . "</label><br>
+                <input required type=\"text\" id=\"Achternaam" . $i ."\" name=\"Achternaam" . $i . "\"><label for\"Achternaam" . $i ."\> Achternaam persoon " . $i . "</label><br>
+                <input required type=\"text\" id=\"Land" . $i ."\" name=\"Land" . $i . "\"><label for\"Land" . $i ."\> Land persoon " . $i . "</label><br>
+                <input required type=\"text\" id=\"Stad" . $i ."\" name=\"Stad" . $i . "\"><label for\"Stad" . $i ."\> Stad persoon " . $i . "</label><br>
+                <input required type=\"text\" id=\"Postcode" . $i ."\" name=\"Postcode" . $i . "\"><label for\"Postcode" . $i ."\> Postcode persoon " . $i . "</label><br>
+                <input required type=\"date\" id=\"Geboortedatum" . $i ."\" name=\"Geboortedatum" . $i . "\"><label for\"Geboortedatum" . $i ."\> Geboortedatum persoon " . $i . "</label><br>
+                <input required type=\"email\" id=\"Email" . $i ."\" name=\"Email" . $i . "\"><label for\"Email" . $i ."\> Email persoon " . $i . "</label><br>
+                <input required type=\"number\" id=\"TelefoonNummer" . $i ."\" name=\"TelefoonNummer" . $i . "\"><label for\"TelefoonNummer" . $i ."\> TelefoonNummer persoon " . $i . "</label><br>";
+                }
             ?>
-            
+			<input type="Submit" name="Submit3" id="Submit3">
+		</div>
         </form>
     </body>
 </html>

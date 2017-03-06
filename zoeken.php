@@ -1,6 +1,7 @@
 <?php
 // Maakt verbinding
 include 'config.php';
+include 'functies.php';
 // Start the session
 session_start();
 ?>
@@ -27,7 +28,7 @@ session_start();
     GROUP BY 2 ORDER BY 2';
     Suggestie("Andere Datums",$Opties, $conn,"DatumVlucht");
 
-	echo '<Form action="placeholder.php" method="post" id="zoeken">'; 
+	echo '<Form action="PersoonlijkeInfo.php" method="post" id="zoeken">'; 
 	$query =  'SELECT VertrekLand, Aankomstland, VertrekDatum, Vluchtnummer, Prijs FROM dummy1 
 	WHERE VertrekLand = "' .$_SESSION["post"]["Vertrek"].'"AND AankomstLand = "'.$_SESSION["post"]["Aantkomst"].'" AND VertrekDatum="'.$_SESSION["post"]["DatumVlucht"].'"';
 	tabel("Heenreis",$query, $conn);
@@ -40,7 +41,7 @@ session_start();
     GROUP BY 2 ORDER BY 2';
 	
     Suggestie("Andere Datums",$Optiesterug, $conn,"Terug");
-	echo'<Form action="placeholder.php" method="post">'; 
+	echo'<Form action="PersoonlijkeInfo.php" method="post">'; 
 		$query =  'SELECT VertrekLand, Aankomstland, VertrekDatum, Vluchtnummer FROM dummy1 
 		WHERE VertrekLand = "' .$_SESSION["post"]["Aantkomst"].'"AND AankomstLand = "'.$_SESSION["post"]["Vertrek"].'" AND VertrekDatum="'.$_SESSION["post"]["Terug"].'"';
 		tabel("Terugreis",$query, $conn);
