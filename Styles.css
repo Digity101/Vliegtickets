@@ -1,29 +1,30 @@
-/*
+
 @font-face {
     font-family: happymonkey;
     src: url(http://v15groep1.helenparkhurst.net/MikaGithubtest/Vliegtickets/HappyMonkey-Regular.ttf);
 }
 
-.TerugCl {
-  opacity: 0;
-	margin-top: -330px;
-	z-index: -5;
-	transition-timing-function: linear, step-end, step-end;
+
+/*.TerugCl {
+opacity: 0;
+margin-top: -330px;
+z-index: -5;
+transition-timing-function: linear, step-end, step-end;
 }
 
 #Retour:checked ~ .TerugCl {
-    transition: opacity 0.5s linear, margin-top 0.5s step-start, z-index 0.5s step-start;
-	display: initial;
-	position: relative;
+transition: opacity 0.5s linear, margin-top 0.5s step-start, z-index 0.5s step-start;
+display: initial;
+position: relative;
 }*/
 
 input{
-	margin-top:  0.5vh;
-	margin-bottom: 0.5vh;
-	margin-left: 0.5vw;
-	margin-right: 0.5vw;
-	border: 0;
-	padding: 0;
+    margin-top:  0.5vh;
+    margin-bottom: 0.5vh;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    border: 0;
+    padding: 0;
 }
 
 
@@ -42,25 +43,25 @@ table, th, td{
 }
 
 .PersVer{
-	margin-left: 2vw;
+    margin-left: 2vw;
 }
 
 label{
-	font-family: happymonkey;
+    font-family: happymonkey;
 }
 
 #Body{
-	background: url("Fotos/Foto1.jpg");
-	background-repeat: no-repeat;
-	background-size: 100vw 100vh;
+    background: url("Fotos/Foto1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
 }
 
 .FormWrapper{
-	background-color: #11db11;
-	border-radius: 10px;
-	width: 20vw;
-	padding-top:  2vh;
-	padding-bottom: 2vh;
-	padding-left: 2vw;
-	padding-right: 2vw;
+    background-color: #11db11;
+    border-radius: 10px;
+    width: 20vw;
+    padding-top:  2vh;
+    padding-bottom: 2vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
 }

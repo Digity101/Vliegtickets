@@ -19,14 +19,16 @@ session_start();
     <?php
 	$_SESSION["post"] = $_POST;
 
+
 	$Opties =  'SELECT MIN(prijs) AS prijs, datumvertrek FROM VLUCHT 
 	WHERE vertrekplaats = "'.$_SESSION["post"]["Vertrek"].'" AND aankomstplaats = "'.$_SESSION["post"]["Aantkomst"].'" 
     AND datumvertrek BETWEEN DATE_ADD("'.$_SESSION["post"]["DatumVlucht"].'", INTERVAL -7 DAY) AND DATE_ADD("'.$_SESSION["post"]["DatumVlucht"].'", INTERVAL 7 DAY)
     GROUP BY 2 ORDER BY 2';
     Suggestie("Andere Datums Heenreis",$Opties, $conn,"DatumVlucht");
-	echo '<Form action="placeholder.php" method="post" id="zoeken">'; 
+	echo '<Form action="PersoonlijkeInfo.php" method="post" id="zoeken">'; 
 	$query =  'SELECT vertrekplaats, aankomstplaats, datumvertrek, Vnr, prijs FROM VLUCHT 
 	WHERE vertrekplaats = "' .$_SESSION["post"]["Vertrek"].'"AND aankomstplaats = "'.$_SESSION["post"]["Aantkomst"].'" AND datumvertrek="'.$_SESSION["post"]["DatumVlucht"].'"';
+
 	tabel("Heenreis",$query, $conn);
     echo '</Form>';  
     
@@ -37,9 +39,10 @@ session_start();
     GROUP BY 2 ORDER BY 2';
 	
     Suggestie("Andere Datums Terugreis",$Optiesterug, $conn,"Terug");
-	echo'<Form action="placeholder.php" method="post">'; 
+	echo'<Form action="PersoonlijkeInfo.php" method="post">'; 
 		$query =  'SELECT vertrekplaats, aankomstplaats, datumvertrek, Vnr FROM VLUCHT 
 		WHERE vertrekplaats = "' .$_SESSION["post"]["Aantkomst"].'"AND aankomstplaats = "'.$_SESSION["post"]["Vertrek"].'" AND datumvertrek="'.$_SESSION["post"]["Terug"].'"';
+
 		tabel("Terugreis",$query, $conn);
 	}
 	
@@ -53,3 +56,4 @@ session_start();
 <?php
 mysqli_close($conn);
 ?>
+

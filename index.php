@@ -26,6 +26,7 @@ session_start();
         <div class=FormWrapper>
             <form action="zoeken.php" method="post">
                 <datalist id="landen">
+
                   
   <?php
   $query = "SELECT `vertrekplaats` AS name FROM VLUCHT
@@ -37,6 +38,7 @@ SELECT `aankomstplaats` AS name FROM VLUCHT";
 	echo "<option value='".$row["name"]."' id='".$row["name"]."'></option>";
   }
   ?>
+
 
                 </datalist>
                 <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour</label><br>
@@ -57,6 +59,7 @@ SELECT `aankomstplaats` AS name FROM VLUCHT";
                 <label for="AantalBaby" class="PersVer"> <br> Aantal Baby's (0-2)<br></label>
                 <input type="number" name="AantalBaby" id="AantalBaby" class="PersVer" value="0" min="0" required  oninput="ValiPers();"><br>
                 <input type="submit" name="Zoek een vlucht" id="Submit1">
+                <?php $guid = uniqid(); echo $guid;?>
             </form>
 
         </div>
@@ -71,6 +74,7 @@ SELECT `aankomstplaats` AS name FROM VLUCHT";
 		</div>
     </body>
 </html>
+
 <script>
 $( document ).ready(function() {
   // Find all inputs on the DOM which are bound to a datalist via their list attribute.
@@ -101,6 +105,7 @@ if ( $('#DatumVLuchtheen')[0].type != 'date' ) $('#DatumVLuchtheen').datepicker(
 if ( $('#Terug')[0].type != 'date' ) $('#Terug').datepicker();
 });
 </script>
+
 <?php
 mysqli_close($conn);
 ?>
