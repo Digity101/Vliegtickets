@@ -6,6 +6,7 @@ $db = "v15groep1_vlieg";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $db);
+mysqli_query($conn, "SET NAMES utf8");
 
 // Check connection
 if ($conn->connect_error) {

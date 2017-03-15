@@ -8,14 +8,16 @@ session_start();
 
 
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" id="htmlpag1">
 
     <head>
         <title>Geen scam</title>
         <link href="icon.ico" rel="shortcut icon">
         <meta charset="UTF-8">
 		<link href="Styles.css" rel="stylesheet">
-        <script src="/jquery-3.1.1.min.js"></script>
+        <script src="jquery-3.1.1.min.js"></script>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" /> 
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
         <script src="jquery.cycle.lite.js"></script>
         <script src="JSpag1.js"></script>
 
@@ -24,7 +26,7 @@ session_start();
 
     <body id="Body">
         <div class=FormWrapper>
-            <form action="zoeken.php" method="post">
+            <form action="zoeken.php" method="get">
                 <datalist id="landen">
 
                   
@@ -41,7 +43,7 @@ SELECT `aankomstplaats` AS name FROM VLUCHT";
 
 
                 </datalist>
-                <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour</label><br>
+                <input type="checkbox" name="Retour" checked id="Retour"><label for="Retour">Retour </label><br>
                 <label for="Vertrek">Vertrekken van:</label><br>
                 <input list="landen" name="Vertrek" id="Vertrek" class="VInput" onblur="DatalistRemove();" required onfocus="DatalistAdd();"><br>
                 <label for="Aankomst"> Aankomen in:</label><br>
@@ -59,52 +61,30 @@ SELECT `aankomstplaats` AS name FROM VLUCHT";
                 <label for="AantalBaby" class="PersVer"> <br> Aantal Baby's (0-2)<br></label>
                 <input type="number" name="AantalBaby" id="AantalBaby" class="PersVer" value="0" min="0" required  oninput="ValiPers();"><br>
                 <input type="submit" name="Zoek een vlucht" id="Submit1">
-                <?php $guid = uniqid(); echo $guid;?>
+                
             </form>
 
         </div>
 		<br>
 		<div class=FormWrapper>
-            <form action="index.php" method="post">
-			<input type="text" name="Boekingsnummer">
-			<input type="submit" name="Zoek" id="Submit1">
-			</form>
-		<?php
-		?>
+            <form action="gegevens.php" method="get">
+			Boekingsnummer: <input type="text" name="Boekingsnummer">
+			<br><input type="submit" name="Zoek" id="Submit1">
+		</form>
+
+		</div>
+		<div class="RO" id="RO1">
+			<a href="http://v15groep1.helenparkhurst.net/zoeken.php?Vertrek=Nederland&Aantkomst=Noorwegen&DatumVlucht=2017-04-20=&AantalPers=2">Nu van nederland naar noorwegen op 20 april 2 personen voor maar €734,33 per persoon</a>
+		</div>
+		<div class="RO" id="RO2">
+			<a href="http://v15groep1.helenparkhurst.net/zoeken.php?Vertrek=Finland&Aantkomst=Nederland&DatumVlucht=2017-04-20&AantalPers=2">of nu van finland naar nederland op 20 april met 2 personen voor maar €0,36</a>   	
+		</div>
+		<div class="RO" id="RO3">
+			<a href="http://v15groep1.helenparkhurst.net/zoeken.php?Vertrek=Nederland&Aantkomst=Spanje&DatumVlucht=2017-04-13&AantalPers=2"> Of mischien toch naar spanje met 2 personen op 13 april voor maar €377,69 p.p.</a>
 		</div>
     </body>
+
 </html>
-
-<script>
-$( document ).ready(function() {
-  // Find all inputs on the DOM which are bound to a datalist via their list attribute.
-var inputs = document.querySelectorAll('input[list]');
-for (var i = 0; i < inputs.length; i++) {
-  // When the value of the input changes...
-  inputs[i].addEventListener('change', function() {
-    var optionFound = false,
-      datalist = this.list;
-    // Determine whether an option exists with the current value of the input.
-
-    for (var j = 0; j < datalist.options.length; j++) {
-        if (this.value == datalist.options[j].value) {
-            optionFound = true;
-            break;
-        }
-    }
-    // use the setCustomValidity function of the Validation API
-    // to provide an user feedback if the value does not exist in the datalist
-    if (optionFound) {
-      this.setCustomValidity('');
-    } else {
-      this.setCustomValidity('Please select a valid value.');
-    }
-  });
-}
-if ( $('#DatumVLuchtheen')[0].type != 'date' ) $('#DatumVLuchtheen').datepicker();
-if ( $('#Terug')[0].type != 'date' ) $('#Terug').datepicker();
-});
-</script>
 
 <?php
 mysqli_close($conn);

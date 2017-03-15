@@ -3,7 +3,7 @@ function tabel($naam, $mysql_query,$connection,$radio = 1){
 	echo"<h1>$naam</h1>";
 	$resultaat= mysqli_query($connection, $mysql_query);
 	IF(mysqli_num_rows($resultaat)==0){
-		echo "Geen vlucht beschikbaar<br>";
+		echo "Geen resultaten beschikbaar<br>";
 		return;
 	}
 	echo '<table><tr>';
@@ -21,14 +21,14 @@ function tabel($naam, $mysql_query,$connection,$radio = 1){
 			echo "<td>$r</td>";
 		}
 		If($radio == 1){
-			echo '<td class="knop"><input form="zoeken" type="radio" required name="'.$naam.'" value="'.$row["Vluchtnummer"].'"></td>';
+			echo '<td class="knop"><input form="zoeken" type="radio" required name="'.$naam.'" value="'.$row["Vnr"].'"></td>';
 		}
 		echo "</tr>";
 	}
   echo "</table>";
 }
-function Suggestie($naam, $mysql_query,$connection,$verzendnaam){
-	echo'<form action="zoeken.php" method="post">';
+function Suggestie($naam, $mysql_query,$connection,$verzendnaam, $terug = 0){
+	echo'<form action="zoeken.php" method="get">';
 	Foreach ($_SESSION["post"] as $key => $value){
 		echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
 	}
@@ -46,7 +46,13 @@ function Suggestie($naam, $mysql_query,$connection,$verzendnaam){
 	$resultaat= mysqli_query($connection, $mysql_query);
 	echo "</tr><tr>";
 	While ($row = mysqli_fetch_row($resultaat)){
-		echo '<th><button type="submit" value="'.$row[1].'"name="'.$verzendnaam.'">'.$row[0].'</button></th>';
+		if($terug == "terug" AND $row[1] < $_SESSION["post"]["Terug"]){
+			echo '<th><button type="submit" disabled value="'.$row[1].'"name="'.$verzendnaam.'">'.$row[0].'</button></th>';
+		}
+		else{
+			echo '<th><button type="submit" value="'.$row[1].'"name="'.$verzendnaam.'">'.$row[0].'</button></th>';	
+		}
+	
 	}
     echo "</tr></table></form>";
 }

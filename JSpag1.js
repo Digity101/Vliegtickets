@@ -5,7 +5,9 @@ $(document).ready(function ()
     {
         $(".TerugCl").fadeIn();
     }
-    setInterval(changeBackground, 5000);
+    if(window.location.pathname == '/'){
+        setInterval(changeBackground, 10000);
+    }
     $(".PersVer").hide();
     $(".PersVer").required = false;
     document.getElementById("Terug").min = document.getElementById("DatumVLuchtheen").value;
@@ -74,35 +76,33 @@ function MinTerug(){
 var FotoLoc = 1;
 
 function changeBackground(){
+    $("#RO" + FotoLoc).animate({left:"100vw"},600);
+    $("#RO" + FotoLoc).animate({left : "70vw", top : "100vh"}, 0);
     if(FotoLoc == 3){
-        FotoLoc = 1
+        FotoLoc = 1;
     } else {
-        FotoLoc++
+        FotoLoc++;
     }
-    $("#Body").css({"background" : "url('Fotos/Foto"+ Fotoloc +"')" , "background-repeat" : "no-repeat" , "background-size" : "100vw 100vh"});
+    $("#Body").css({"background" : "url('Fotos/Foto"+ FotoLoc +".jpg')" , "background-repeat" : "no-repeat" , "background-size" : "100vw 100vh", "background-attachment" : "fixed"});
+    $("#RO" + FotoLoc).animate({top:"80vh"},400);
 }
 
 $( document ).ready(function() {
-  // Find all inputs on the DOM which are bound to a datalist via their list attribute.
 var inputs = document.querySelectorAll('input[list]');
 for (var i = 0; i < inputs.length; i++) {
-  // When the value of the input changes...
   inputs[i].addEventListener('change', function() {
     var optionFound = false,
       datalist = this.list;
-    // Determine whether an option exists with the current value of the input.
     for (var j = 0; j < datalist.options.length; j++) {
         if (this.value == datalist.options[j].value) {
             optionFound = true;
             break;
         }
     }
-    // use the setCustomValidity function of the Validation API
-    // to provide an user feedback if the value does not exist in the datalist
     if (optionFound) {
       this.setCustomValidity('');
     } else {
-      this.setCustomValidity('Please select a valid value.');
+      this.setCustomValidity('Kies alstublieft iets van de suggesties');
     }
   });
 }

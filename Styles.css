@@ -1,7 +1,34 @@
+/* afbeeldingen preloaden*/
+html:after{
+    position:relative;
+	z-index:-1;
+	display: none;
+    content: url(Fotos/Foto1.jpg) url(Fotos/Foto2.jpg) url(Fotos/Foto3.jpg);
+}
 
+*{
+	font-family: happymonkey;
+}
+#htmlpag1{
+	overflow: hidden
+}
+
+.RO{
+	position: absolute;
+	left: 70vw;
+	top: 80vh;
+}
+#RO2, #RO3{
+	top: 100vh;
+}
+
+/*::-webkit-scrollbar { 
+    display: none; 
+}
+*/
 @font-face {
     font-family: happymonkey;
-    src: url(http://v15groep1.helenparkhurst.net/MikaGithubtest/Vliegtickets/HappyMonkey-Regular.ttf);
+    src: url(http://v15groep1.helenparkhurst.net/HappyMonkey-Regular.ttf);
 }
 
 
@@ -26,40 +53,59 @@ input{
     border: 0;
     padding: 0;
 }
+table{
+	border-collapse: collapse;
+}
 
-
-table, th, td{
+th, td{
 	border: 1px solid black;
 	border-collapse: collapse;
 }
 
 .knop {
-	border: 1px solid white;
+	border: none;
 }
 
-.VInput{
-	height: 1vw;
-	width: 10vw;
-}
 
 .PersVer{
     margin-left: 2vw;
 }
 
-label{
-    font-family: happymonkey;
-}
+
+
 
 #Body{
     background: url("Fotos/Foto1.jpg");
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
+	background-attachment: fixed;
+	display: inline-block;
 }
 
-.FormWrapper{
+.Div2{
+    left: 14vw;
+    position: absolute;
+    margin: auto;
+    width: 70vw;
+}
+
+
+.FormWrapper2{
+	margin: auto;
     background-color: #11db11;
-    border-radius: 10px;
-    width: 20vw;
+    border-radius: 1vw;
+    padding-top:  2vh;
+    padding-bottom: 2vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+	position: absolute;
+    left: 50vw;
+    transform: translate(-50%, 0%) 
+}
+
+.FormWrapper, .RO{
+    background-color: #11db11;
+    border-radius: 1vw;
     padding-top:  2vh;
     padding-bottom: 2vh;
     padding-left: 2vw;
